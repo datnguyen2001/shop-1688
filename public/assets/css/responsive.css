@@ -1,0 +1,230 @@
+@media only screen and (max-width: 1024px) {
+    .menu ul li a {
+        padding: 14px 5px;
+    }
+
+    .top-category .item-category .title-category {
+        font-size: 21px;
+    }
+
+    .product-home .title-primary:before {
+        display: none
+    }
+
+    .product-home .title-primary:after {
+        display: none;
+    }
+
+    .container1000 {
+        width: calc(100% - 20px);
+        margin: auto;
+    }
+    .wp-item-sp-222 .wp-img-to img {
+        height: 293px;
+    }
+    .hotline-phone-mobile{
+        display: none;
+    }
+    .header-logo-mobile{
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .item-product .image img {
+        width: 100%;
+        height: 152px;
+        object-fit: contain;
+    }
+
+    .customer-consulting .item .title{
+        font-size: 10px;
+    }
+    .item1{
+        float: left;
+    }
+    .logo {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .hc-nav-trigger.hc-nav-1 {
+        display: block !important;
+    }
+
+    .second-nav {
+        display: block;
+    }
+
+    .top-search {
+        margin-bottom: 15px;
+    }
+
+    .main-menu {
+        display: none;
+    }
+
+    #slider-home .item img {
+        height: auto;
+    }
+
+    #main {
+        margin-top: 15px;
+    }
+
+    .top-category .col-md-6 {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .top-category .item-category .title-category {
+        width: auto;
+    }
+
+    .product-home .nav-product .item-product {
+        width: calc((100% - 30px) / 2);
+        display: inline-block;
+        float: left;
+        margin-right: 30px;
+        margin-bottom: 30px;
+    }
+
+    .product-home .nav-product .item-product:nth-child(5n) {
+        margin-right: 30px;
+    }
+
+    .product-home .nav-product .item-product:nth-child(2n) {
+        margin-right: 0
+    }
+
+    .why-choose .nav-image .title {
+        font-size: 16px;
+        line-height: 22px;
+        margin-top: 0
+    }
+
+    .customer-consulting .item {
+        margin-bottom: 30px;
+    }
+
+    .main-child1 > .container > .row {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        margin: auto;
+    }
+
+    .main-child1 > .container > .row > .col-md-9 {
+        order: 1;
+        width: 100%;
+    }
+
+    .main-child1 > .container > .row > .col-md-3 {
+        order: 2;
+        width: 100%;
+    }
+
+    .sidebar .support .images {
+        text-align: center
+    }
+
+    .sidebar .new-sidebar .image img {
+        height: auto
+    }
+
+    .other-product .item-product {
+        padding-bottom: 15px;
+    }
+
+    .main-detail-product .detail-product-right .add-tocart a {
+        width: 100%;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    .main-detail-product .detail-product-right {
+        padding-top: 15px;
+    }
+    .wp-item-sp-222 .wp-img-to img {
+        height: 345px;
+    }
+    .footer-facebook {
+        width: 100%!important;
+    }
+}
+
+@media only screen and (max-width: 736px) {
+    .wp-item-sp-222 .wp-img-to img {
+        height: auto;
+    }
+    .top-category .item-category .nav-item-category .item .image img {
+        height: 109px !important;
+    }
+
+    .why-choose .nav-image {
+        padding-top: 30px;
+    }
+
+    .top-header-left {
+        display: none
+    }
+
+    .top-category .item-category .title-category {
+        width: 90%;
+        text-align: center
+    }
+
+    .main-order {
+        margin-top: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 667px) {
+    .product-home .title-primary {
+        font-size: 20px;
+    }
+
+    .product-home {
+        margin-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .customer-consulting .item ul {
+        display: inline-flex;
+    }
+
+    .main-order .tab-order ul li {
+        padding: 5px;
+    }
+
+    .main-order .tab-order ul li a {
+        font-size: 12px;
+    }
+
+    .main-viewed .item-product .image img {
+        height: 150px;
+    }
+
+    .main-admin {
+        margin-top: 20px;
+    }
+    .main-content-product .title-pr{
+        font-size: 21px;
+    }
+    .item-product .price{
+        font-size: 16px;
+    }
+    footer{
+        padding-bottom: 70px;
+    }
+    .backtotop{
+        right: 18px;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+
+}
