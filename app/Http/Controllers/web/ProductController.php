@@ -25,7 +25,8 @@ class ProductController extends Controller
         $product_image = ProductImageModel::where('product_id',$product->id)->get();
         $product_color = ProductColorModel::where('product_id',$product->id)->get();
         $product_more = ProductModel::where('category_id',$product->category_id)->where('id','!=',$product->id)->where('display',1)->take(8)->get();
-        $viewItemsJson = Cookie::get('viewItemProduct', []);
+//        $viewItemsJson = Cookie::get('viewItemProduct', []);
+        $viewItemsJson = Cookie::has('viewItemProduct') ? Cookie::get('viewItemProduct') : '[]';
         $viewItemProduct = json_decode($viewItemsJson, true);
         if (!in_array($product->id, $viewItemProduct)) {
             $viewItemProduct[] = $product->id;

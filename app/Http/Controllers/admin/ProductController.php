@@ -43,9 +43,14 @@ class ProductController extends Controller
     {
         try {
             $attribute = $request->variant;
-            $category = CategoryModel::find($request->get('category_children'));
+            $category = CategoryModel::find($request->get('category'));
             if (empty($category)) {
                 return back()->with(['error' => 'Vui lòng chọn danh mục để tiếp tục']);
+            }
+            $category_id = $category->id;
+            $category2 = CategoryModel::find($request->get('category_children'));
+            if (isset($category2)) {
+                $category_id = $category2->id;
             }
             if (!$request->hasFile('file_product')) {
                 return back()->with(['error' => 'Vui lòng thêm hình ảnh sản phẩm']);
@@ -63,7 +68,7 @@ class ProductController extends Controller
                 'slug' => Str::slug($request->get('name')),
                 'code' => $request->get('code'),
                 'src' => $image,
-                'category_id' => isset($category) ? $category->id : null,
+                'category_id' => $category_id??null,
                 'price' => str_replace(",", "", $request->get('price')),
                 'content' => $request->get('content'),
                 'display' => $display,
@@ -109,7 +114,11 @@ class ProductController extends Controller
         $product = ProductModel::find($id);
         $category_all = CategoryModel::where('parent_id', 0)->get();
         $cate_big = CategoryModel::find($product->category_id);
-        $category_child = CategoryModel::where('parent_id',$cate_big->parent_id)->get();
+        if ($cate_big->parent_id == 0){
+            $category_child = [];
+        }else{
+            $category_child = CategoryModel::where('parent_id',$cate_big->parent_id)->get();
+        }
         $product_color = ProductColorModel::where('product_id',$id)->get();
         $product_img = ProductImageModel::where('product_id',$id)->get();
         return view('admin.product.edit', compact('category_child', 'titlePage', 'page_menu', 'page_sub',
@@ -121,9 +130,14 @@ class ProductController extends Controller
         try {
             $attribute = $request->variant;
             $product = ProductModel::find($id);
-            $category = CategoryModel::find($request->get('category_children'));
-            if (empty($product)) {
-                return back()->with(['error' => 'Sản phẩm không tồn tại']);
+            $category = CategoryModel::find($request->get('category'));
+            if (empty($category)) {
+                return back()->with(['error' => 'Vui lòng chọn danh mục để tiếp tục']);
+            }
+            $category_id = $category->id;
+            $category2 = CategoryModel::find($request->get('category_children'));
+            if (isset($category2)) {
+                $category_id = $category2->id;
             }
             $display = 0;
             if ($request->display == 'on') {
@@ -137,7 +151,7 @@ class ProductController extends Controller
                 $file->move('upload/product/', $image);
                 $product->src = $image;
             }
-            $product->category_id = isset($category) ? $category->id : null;
+            $product->category_id = $category_id??null;
             $product->name = $request->get('name');
             $product->slug = Str::slug($request->get('name'));
             $product->code = $request->get('code');

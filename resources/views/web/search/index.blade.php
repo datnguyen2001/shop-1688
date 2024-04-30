@@ -20,7 +20,9 @@
                 @include('web.partials.menu')
                 <div class="col-md-9 col-sm-9 col-xs-12">
                     <div class="main-content-product">
+                        @if($key_search)
                         <h1 class="title-pr">Từ khóa: {{$key_search}}</h1>
+                        @endif
                         <div class="content-product" style="margin-top: 0px">
                             <div class="row">
                                 @if(isset($listData) && count($listData)>0)

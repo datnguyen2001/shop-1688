@@ -57,7 +57,7 @@
                                             <div class="d-flex align-items-center category p-1">
                                                 <div class="d-flex align-items-center" style="margin-right: 10px">
                                                     <input type="radio" style="width: 20px; height: 20px" id="cate{{$key}}"
-                                                           value="{{$cate->id}}" name="category" @if($cate_big->parent_id == $cate->id) checked @endif></div>
+                                                           value="{{$cate->id}}" name="category" @if($cate_big->parent_id == $cate->id) checked @elseif($cate_big->id == $cate->id) checked @endif></div>
                                                 <label for="cate{{$key}}" class="m-0">{{$cate->name}}</label>
                                             </div>
                                         @endforeach
