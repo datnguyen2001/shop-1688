@@ -13,8 +13,8 @@ class PostController extends Controller
     public function indexCate()
     {
         $titlePage = 'Admin | Danh Mục Bài Viết';
-        $page_menu = 'post';
-        $page_sub = 'category';
+        $page_menu = 'category-post';
+        $page_sub = null;
         $listData = CategoryPostModel::paginate(20);
         return view('admin.posts.category.index', compact('titlePage', 'page_menu', 'listData', 'page_sub'));
     }
@@ -22,8 +22,8 @@ class PostController extends Controller
     public function createCate()
     {
         $titlePage = 'Admin | Danh Mục Bài Viết';
-        $page_menu = 'post';
-        $page_sub = 'category';
+        $page_menu = 'category-post';
+        $page_sub = null;
         return view('admin.posts.category.create', compact('titlePage', 'page_menu', 'page_sub'));
     }
 
@@ -57,8 +57,8 @@ class PostController extends Controller
     {
         $category = CategoryPostModel::find($id);
         $titlePage = 'Admin | Danh Mục Bài Viết';
-        $page_menu = 'post';
-        $page_sub = 'category';
+        $page_menu = 'category-post';
+        $page_sub = null;
         return view('admin.posts.category.edit', compact('category', 'titlePage', 'page_menu', 'page_sub'));
     }
 
@@ -83,8 +83,8 @@ class PostController extends Controller
     public function index(Request $request)
     {
         $titlePage = 'Danh sách bài viết';
-        $page_menu = 'post';
-        $page_sub = 'blog';
+        $page_menu = 'blog';
+        $page_sub = null;
         if (isset($request->key_search)) {
             $listData = PostModel::Where('name', 'like', '%' . $request->get('key_search') . '%')
                 ->orderBy('created_at', 'desc')->paginate(10);
@@ -98,8 +98,8 @@ class PostController extends Controller
     public function create()
     {
         $titlePage = 'Bài viết';
-        $page_menu = 'post';
-        $page_sub = 'blog';
+        $page_menu = 'blog';
+        $page_sub = null;
         $category = CategoryPostModel::all();
         return view('admin.posts.news.create', compact('titlePage', 'page_menu', 'page_sub', 'category'));
     }
@@ -144,8 +144,8 @@ class PostController extends Controller
         $news = PostModel::find($id);
         $category = CategoryPostModel::all();
         $titlePage = 'Bài viết';
-        $page_menu = 'post';
-        $page_sub = 'blog';
+        $page_menu = 'blog';
+        $page_sub = null;
         return view('admin.posts.news.edit', compact('news', 'titlePage', 'page_menu', 'page_sub','category'));
 
     }

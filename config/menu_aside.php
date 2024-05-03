@@ -20,61 +20,109 @@ return [
             'number' => 2
         ],
         [
-            'name' => 'category-product',
-            'title' => 'Quản lý sản phẩm',
+            'name' => 'category',
+            'title' => 'Quản lý danh mục',
             'icon' => 'bi bi-grid',
-            'route' => null,
-            'submenu' => [
-                [
-                    'title' => 'Danh mục sản phẩm',
-                    'route' => 'admin.category.index',
-                    'name' => 'category'
-                ],
-                [
-                    'title' => 'Sản phẩm',
-                    'route' => 'admin.product.index',
-                    'name' => 'product'
-                ],
-            ],
+            'route' => 'admin.category.index',
+            'submenu' => [],
             'number' => 3
         ],
         [
-            'name' => 'post',
-            'title' => 'Quản lý bài viết',
+            'name' => 'product',
+            'title' => 'Quản lý sản phẩm',
             'icon' => 'bi bi-grid',
-            'route' => null,
-            'submenu' => [
-                [
-                    'title' => 'Danh mục',
-                    'route' => 'admin.category-post.index-cate',
-                    'name' => 'category'
-                ],
-                [
-                    'title' => 'Bài viết',
-                    'route' => 'admin.post.index',
-                    'name' => 'blog'
-                ],
-            ],
+            'route' => 'admin.product.index',
+            'submenu' => [],
             'number' => 4
         ],
+//        [
+//            'name' => 'category-product',
+//            'title' => 'Quản lý sản phẩm',
+//            'icon' => 'bi bi-grid',
+//            'route' => null,
+//            'submenu' => [
+//                [
+//                    'title' => 'Danh mục sản phẩm',
+//                    'route' => 'admin.category.index',
+//                    'name' => 'category'
+//                ],
+//                [
+//                    'title' => 'Sản phẩm',
+//                    'route' => 'admin.product.index',
+//                    'name' => 'product'
+//                ],
+//            ],
+//            'number' => 3
+//        ],
+//        [
+//            'name' => 'post',
+//            'title' => 'Quản lý bài viết',
+//            'icon' => 'bi bi-grid',
+//            'route' => null,
+//            'submenu' => [
+//                [
+//                    'title' => 'Danh mục',
+//                    'route' => 'admin.category-post.index-cate',
+//                    'name' => 'category'
+//                ],
+//                [
+//                    'title' => 'Bài viết',
+//                    'route' => 'admin.post.index',
+//                    'name' => 'blog'
+//                ],
+//            ],
+//            'number' => 4
+//        ],
         [
-            'name' => 'contact',
-            'title' => 'Liên hệ',
+            'name' => 'category-post',
+            'title' => 'Danh mục bài viết',
             'icon' => 'bi bi-grid',
-            'route' => null,
-            'submenu' => [
-                [
-                    'title' => 'Danh sách liên hệ',
-                    'route' => 'admin.contact',
-                    'name' => 'list-contact'
-                ],
-                [
-                    'title' => 'Danh sách đăng ký nhận bản tin',
-                    'route' => 'admin.contact-newsletter',
-                    'name' => 'contact-newsletter'
-                ],
-            ],
+            'route' => 'admin.category-post.index-cate',
+            'submenu' => [],
             'number' => 5
+        ],
+        [
+            'name' => 'blog',
+            'title' => 'Quản lý bài viết',
+            'icon' => 'bi bi-grid',
+            'route' => 'admin.post.index',
+            'submenu' => [],
+            'number' => 6
+        ],
+//        [
+//            'name' => 'contact',
+//            'title' => 'Liên hệ',
+//            'icon' => 'bi bi-grid',
+//            'route' => null,
+//            'submenu' => [
+//                [
+//                    'title' => 'Danh sách liên hệ',
+//                    'route' => 'admin.contact',
+//                    'name' => 'list-contact'
+//                ],
+//                [
+//                    'title' => 'Danh sách đăng ký nhận bản tin',
+//                    'route' => 'admin.contact-newsletter',
+//                    'name' => 'contact-newsletter'
+//                ],
+//            ],
+//            'number' => 5
+//        ],
+        [
+            'name' => 'list-contact',
+            'title' => 'Danh sách liên hệ',
+            'icon' => 'bi bi-grid',
+            'route' => 'admin.contact',
+            'submenu' => [],
+            'number' => 5
+        ],
+        [
+            'name' => 'contact-newsletter',
+            'title' => 'Danh sách đăng ký nhận bản tin',
+            'icon' => 'bi bi-grid',
+            'route' => 'admin.contact-newsletter',
+            'submenu' => [],
+            'number' => 6
         ],
         [
             'name' => 'support-staff',

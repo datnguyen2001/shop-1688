@@ -60,8 +60,8 @@ class SystemController extends Controller
     public function contact(Request $request)
     {
         $titlePage = 'Danh sách liên hệ';
-        $page_menu = 'contact';
-        $page_sub = 'list-contact';
+        $page_menu = 'list-contact';
+        $page_sub = null;
         if (isset($request->key_search)) {
             $listData = ContactModel::Where('name', 'like', '%' . $request->get('key_search') . '%')->where('type',1)
                 ->orderBy('created_at', 'desc')->paginate(20);
@@ -75,8 +75,8 @@ class SystemController extends Controller
     {
         $contact = ContactModel::find($id);
         $titlePage = 'Danh sách liên hệ';
-        $page_menu = 'contact';
-        $page_sub = 'list-contact';
+        $page_menu = 'list-contact';
+        $page_sub = null;
         return view('admin.contact.detail', compact('contact', 'titlePage', 'page_menu', 'page_sub'));
     }
 
@@ -90,8 +90,8 @@ class SystemController extends Controller
     public function contactNewsletter(Request $request)
     {
         $titlePage = 'Danh sách đăng ký nhận bản tin';
-        $page_menu = 'contact';
-        $page_sub = 'contact-newsletter';
+        $page_menu = 'contact-newsletter';
+        $page_sub = null;
         if (isset($request->key_search)) {
             $listData = ContactModel::Where('name', 'like', '%' . $request->get('key_search') . '%')->where('type',2)
                 ->orderBy('created_at', 'desc')->paginate(20);

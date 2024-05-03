@@ -15,8 +15,8 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         $titlePage = 'Admin | Danh Mục Sản Phẩm';
-        $page_menu = 'category-product';
-        $page_sub = 'category';
+        $page_menu = 'category';
+        $page_sub = null;
         $listData = CategoryModel::paginate(20);
         foreach ($listData as $item) {
             $category = CategoryModel::find($item->parent_id);
@@ -28,8 +28,8 @@ class CategoryController extends Controller
     public function create()
     {
         $titlePage = 'Admin | Danh Mục Sản Phẩm';
-        $page_menu = 'category-product';
-        $page_sub = 'category';
+        $page_menu = 'category';
+        $page_sub = null;
         $category = CategoryModel::where('parent_id', 0)->get();
         return view('admin.category.create', compact('titlePage', 'page_menu', 'page_sub', 'category'));
     }
@@ -96,8 +96,8 @@ class CategoryController extends Controller
     {
         $category = CategoryModel::find($id);
         $titlePage = 'Admin | Danh Mục Sản Phẩm';
-        $page_menu = 'category-product';
-        $page_sub = 'category';
+        $page_menu = 'category';
+        $page_sub = null;
         $category_all = CategoryModel::where('parent_id', 0)->get();
         return view('admin.category.edit', compact('category', 'titlePage', 'page_menu', 'page_sub', 'category_all'));
     }

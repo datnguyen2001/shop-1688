@@ -15,8 +15,8 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $titlePage = 'Admin | Danh Sách Sản Phẩm';
-        $page_menu = 'category-product';
-        $page_sub = 'product';
+        $page_menu = 'product';
+        $page_sub = null;
         if (isset($request->key_search)) {
             $listData = ProductModel::Where('name', 'like', '%' . $request->get('key_search') . '%')
                 ->orderBy('created_at', 'desc')->paginate(20);
@@ -33,8 +33,8 @@ class ProductController extends Controller
     public function create()
     {
         $titlePage = 'Admin | Danh Sách Sản Phẩm';
-        $page_menu = 'category-product';
-        $page_sub = 'product';
+        $page_menu = 'product';
+        $page_sub = null;
         $category = CategoryModel::where('parent_id', 0)->get();
         return view('admin.product.create', compact('titlePage', 'page_menu', 'page_sub', 'category'));
     }
@@ -109,8 +109,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $titlePage = 'Admin | Danh Sách Sản Phẩm';
-        $page_menu = 'category-product';
-        $page_sub = 'product';
+        $page_menu = 'product';
+        $page_sub = null;
         $product = ProductModel::find($id);
         $category_all = CategoryModel::where('parent_id', 0)->get();
         $cate_big = CategoryModel::find($product->category_id);
