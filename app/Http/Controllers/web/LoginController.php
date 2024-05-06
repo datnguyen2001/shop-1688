@@ -30,7 +30,7 @@ class LoginController extends Controller
             }
             $user_active = UserModel::where('name', $arr['name'])->where('is_active',1)->value('id');
             if (empty($user_active)) {
-                return redirect()->back()->with('error', 'Tài khoản của bạn đã bị khóa');
+                return redirect()->back()->with('error', 'Tài khoản của bạn chưa được kích hoạt');
             }
             if (Auth::attempt($arr)) {
                     return redirect()->route('home');
@@ -89,9 +89,14 @@ class LoginController extends Controller
         $user->consignee_name = $request->get('fullname');
         $user->consignee_phone = $request->get('phone');
         $user->consignee_address = $request->get('address');
-        $user->is_active = 1;
+        $user->is_active = 0;
         $user->save();
-        return redirect()->route('login')->with(['success'=>'Đăng ký thành công']);
+        return redirect()->route('register-complete')->with(['success'=>'Đăng ký thành công']);
+    }
+
+    public function registerComplete()
+    {
+        return view('web.register-complete');
     }
 
     public function logout()

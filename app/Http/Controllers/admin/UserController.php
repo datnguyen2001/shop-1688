@@ -118,4 +118,18 @@ class UserController extends Controller
             return back()->with(['error' => $exception->getMessage()]);
         }
     }
+
+    public function statusActive($id)
+    {
+        try {
+            $user = UserModel::find($id);
+            if ($user) {
+                $user->is_active = 1;
+                $user->save();
+                return \redirect()->back()->with(['success' => 'Xét kích hoạt tài khoản thành công']);
+            }
+        } catch (\Exception $exception) {
+            dd($exception);
+        }
+    }
 }

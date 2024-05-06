@@ -85,6 +85,7 @@ Route::middleware('check-admin-auth')->group(function () {
         Route::get('delete/{id}', [UserController::class, 'delete']);
         Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit');
         Route::post('update/{id}', [UserController::class, 'update'])->name('update');
+        Route::get('status-active/{id}', [UserController::class,'statusActive'])->name('status-active');
     });
 
     Route::get('contact', [SystemController::class, 'contact'])->name('contact');

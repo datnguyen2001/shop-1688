@@ -47,7 +47,7 @@
                                                 {{$value->name_zalo}}
                                             </td>
                                             <td>
-                                                @if($value->is_active == 1) <span class="text-success">Hoạt động</span> @else <span class="text-danger">Khóa</span> @endif
+                                                @if($value->is_active == 1) <span class="text-success">Hoạt động</span> @else <span class="text-danger">Chưa kích hoạt</span> @endif
                                             </td>
                                             <td>
                                                 <div class="btn-group">
@@ -57,6 +57,11 @@
                                                     <a href="{{url('admin/user/delete/'.$value->id)}}" class="btn btn-delete btn-icon btn-light btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Xóa">
                                                         <i class="bi bi-trash "></i>
                                                     </a>
+                                                    @if($value->is_active == 0)
+                                                    <a href="{{url('admin/user/status-active/'.$value->id)}}" class="btn btn-success btn-sm mx-2">
+                                                        Kích hoạt TK
+                                                    </a>
+                                                        @endif
                                                 </div>
                                             </td>
                                         </tr>

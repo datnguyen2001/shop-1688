@@ -21,6 +21,7 @@ Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('doLogin', [LoginController::class, 'doLogin'])->name('doLogin');
 Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::post('registered', [LoginController::class,'registered'])->name('registered');
+Route::get('/register-complete', [LoginController::class, 'registerComplete'])->name('register-complete');
 Route::get('logout', [LoginController::class,'logout'])->name('logout');
 //Route::get('/recovery', [HomeController::class, 'recovery'])->name('recovery');
 
