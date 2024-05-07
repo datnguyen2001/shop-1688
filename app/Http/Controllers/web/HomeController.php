@@ -18,7 +18,7 @@ class HomeController extends Controller
         $product_category = CategoryModel::where('parent_id',0)->get();
         foreach ($product_category as $item){
             $cate_item = CategoryModel::where('parent_id',$item->id)->pluck('id');
-            $item->product = ProductModel::whereIn('category_id',$cate_item->toArray())->where('display',1)->take(12)->get();
+            $item->product = ProductModel::whereIn('category_id',$cate_item->toArray())->orWhere('category_id',$item->id)->where('display',1)->take(12)->get();
         }
         return view('web.home.index',compact('category','product_category'));
     }

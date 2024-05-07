@@ -58,7 +58,7 @@
                                             </div>
                                             <div class="nav-img">
                                                 <h3 class="title"><a href="{{route('detail-product',$item->slug)}}"
-                                                                     title="ÁO 2 DÂY CHO BÉ GÁI">ÁO 2 DÂY CHO BÉ GÁI</a>
+                                                                     title="{{$item->name}}">{{$item->name}}</a>
                                                 </h3>
                                                 <p class="masp">Mã sản
                                                     phẩm: {{$item->code}}</p>
