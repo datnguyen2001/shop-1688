@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\Web\HomeController;
+use \App\Http\Controllers\web\HomeController;
 use \App\Http\Controllers\web\LoginController;
 use \App\Http\Controllers\web\ProfileController;
 use \App\Http\Controllers\web\ProductController;
