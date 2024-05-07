@@ -64,16 +64,8 @@ class HomeController extends Controller
         }
         if (isset($request->category_id)) {
             $cate = CategoryModel::find($request->category_id);
-            if ($cate->parent_id != 0){
-                $listData = $listData->where('category_id',$cate->id)->where('display',1)->orderBy('created_at','desc');
-            }else{
-                $cate_item = CategoryModel::where('parent_id',$cate->id)->pluck('id')->toArray();
-                if (!empty($cate_item)){
-                    $listData = $listData->whereIn('category_id',$cate_item)->where('display',1)->orderBy('created_at','desc');
-                }else{
-                    $listData = $listData->where('category_id',$cate->id)->where('display',1)->orderBy('created_at','desc');
-                }
-            }
+            $cate_item = CategoryModel::where('parent_id',$cate->id)->pluck('id')->toArray();
+            $listData = $listData->whereIn('category_id',$cate_item)->orWhere('category_id',$cate->id)->where('display',1)->orderBy('created_at','desc');
         }
         $listData = $listData->paginate(28);
 
@@ -87,17 +79,8 @@ class HomeController extends Controller
             $val->cate_child = CategoryModel::where('parent_id',$val->id)->get();
         }
         $cate = CategoryModel::where('slug',$slug)->first();
-        if ($cate->parent_id != 0){
-            $product = ProductModel::where('category_id',$cate->id)->where('display',1)->paginate(28);
-        }else{
-            $cate_item = CategoryModel::where('parent_id',$cate->id)->pluck('id')->toArray();
-            if (!empty($cate_item)){
-                $product = ProductModel::whereIn('category_id',$cate_item)->where('display',1)->paginate(28);
-            }else{
-                $product = ProductModel::where('category_id',$cate->id)->where('display',1)->paginate(28);
-            }
-
-        }
+        $cate_item = CategoryModel::where('parent_id',$cate->id)->pluck('id')->toArray();
+        $product = ProductModel::where('category_id',$cate_item)->orwhere('category_id',$cate->id)->where('display',1)->paginate(28);
 
         return view('web.category.index',compact('category','product','cate'));
     }
