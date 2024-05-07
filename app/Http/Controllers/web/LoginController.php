@@ -94,6 +94,7 @@ class LoginController extends Controller
         return redirect()->route('register-complete')->with(['success'=>'Đăng ký thành công']);
     }
 
+
     public function registerComplete()
     {
         return view('web.register-complete');
