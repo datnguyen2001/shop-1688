@@ -55,8 +55,9 @@
                                                         <div style="width: 15%" class="d-flex justify-content-center">
                                                             <img src="{{asset($item->src)}}" alt="" class="w-75 mr-3" style="border-radius: 4px">
                                                         </div>
-                                                        <div style="width: 35%" class="d-flex justify-content-center">
+                                                        <div style="width: 35%" class="d-flex justify-content-center flex-column align-items-center">
                                                             <p>{{$item->name}}</p>
+                                                            <p>{{ date('d/m/Y H:i', strtotime($item->created_at)) }}</p>
                                                         </div>
                                                         <div style="width: 20%" class="d-flex justify-content-center">
                                                             <p>{{$item->category_name}}</p>
