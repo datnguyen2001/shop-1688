@@ -36,6 +36,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <!-- Template Main CSS File -->
     <link href="{{asset('assets/admin/css/style.css')}}" rel="stylesheet">
+    <style>
+        .header,.sidebar,.bg-neutral{
+            background: #01195f;
+        }
+        .logo h5,.header-nav .nav-profile span,.sidebar-nav .nav-link i{
+            color: white;
+        }
+        .header .toggle-sidebar-btn,.bi-search,.sidebar-nav .nav-link.collapsed i{
+            color: white;
+        }
+        .sidebar-nav .nav-link.collapsed{
+            background: #01195f;
+            color: white;
+        }
+        .sidebar-nav .nav-link{
+            background: #1d3271;
+            color: white;
+        }
+        #main{
+            border-top-left-radius: 40px;
+            background: white;
+            min-height: calc(100vh - 120px);
+            height: auto;
+        }
+        .footer{
+            background: white;
+        }
+    </style>
     @yield('style')
 </head>
 <body class="bg-neutral">

@@ -90,7 +90,7 @@
                                     </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-3">Khóa tài khoản :</div>
+                                    <div class="col-3">Tạm ngừng kích hoạt :</div>
                                     <div class="col-8">
                                         <label class="switch form-check form-switch">
                                             <input type="checkbox" class="form-check-input" @if($user->is_active == 0) checked

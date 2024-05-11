@@ -2,9 +2,9 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
+        <i class="bi bi-shop" style="font-size: 26px;color: white;margin-right: 15px"></i>
         <a href="{{'/admin'}}" class="logo d-flex align-items-center">
-            <img src="{{asset('assets/images/logo.png')}}" alt="" style="width: 50px;height: 50px;max-height: 50px">
-            <h5>Admin</h5>
+            <h5 class="mb-0">Admin</h5>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->

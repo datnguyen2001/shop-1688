@@ -70,7 +70,7 @@
                                         <th scope="col">Sản phẩm</th>
                                         <th scope="col">Tài khoản</th>
                                         <th scope="col">Ghi chú</th>
-                                        @if($status == 0 || $status == 'all' || $status == 1 || $status == 2 || $status == 3)
+                                        @if($status == 0 || $status == 'all' || $status == 1 || $status == 2 || $status == 3 || $status == 4)
                                             <th scope="col" style="width: 15%;">Xác nhận nhanh</th>
                                         @endif
                                     </tr>
@@ -92,7 +92,7 @@
                                             </td>
                                             <td style="font-size: 14px">
                                                 <img src="{{asset($value->product->src)}}" style="width: 80px;"><br>
-                                                Mã sp: <span style="color: #FF0000">{{$value->product->name}}</span><br>
+                                                Mã sp: <span style="color: #FF0000">{{$value->product->code}}</span><br>
                                                 Tên sp: <span style="color: #FF0000">{{$value->product->name}}</span>
                                             </td>
                                             <td style="font-size: 14px">
@@ -148,6 +148,12 @@
                                                         </button>
                                                     </a>
                                                 @endif
+                                                @if($value->status == 4)
+                                                        <a href="{{url('admin/order/status/'.$value->id.'/1')}}">
+                                                            <button type="submit" class="btn btn-primary mb-2">Xác nhận lại đơn
+                                                            </button>
+                                                        </a>
+                                                    @endif
                                                 @if($value->status != 4 && $value->status != 0 && $value->status != 5 && $value->status != 3 && $value->type_payment == 2)
                                                         <a href="{{url('admin/order/status/'.$value->id.'/2')}}">
                                                             <button type="submit" class="btn btn-primary mb-2">Giao hàng

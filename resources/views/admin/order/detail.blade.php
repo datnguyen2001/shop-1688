@@ -116,7 +116,7 @@
                                     <button type="submit" class="btn btn-success ">Ghi chú</button>
                                 </div>
                             </form>
-                            @if($listData->status != 3 && $listData->status != 4)
+                            @if($listData->status != 3)
                             <h8 class="card-title" style="color: #f26522">5. Cập nhật trạng thái đơn hàng</h8>
                             <br>
                             <br>
@@ -155,6 +155,11 @@
                                             <button type="submit" class="btn btn-warning">Huỷ bị thiếu</button>
                                         </a>
                                     @endif
+                                        @if($listData->status == 4)
+                                            <a href="{{url('admin/order/status/'.$listData->id.'/1')}}">
+                                                <button type="submit" class="btn btn-primary">Xác nhận lại đơn hàng</button>
+                                            </a>
+                                        @endif
                                         @if($listData->status == 5)
                                             <a href="{{url('admin/order/status/'.$listData->id.'/2')}}">
                                                 <button type="submit" class="btn btn-primary">Giao hàng</button>
