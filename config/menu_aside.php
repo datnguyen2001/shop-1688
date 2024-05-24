@@ -2,14 +2,14 @@
 
 return [
     'admin' => [
-        [
-            'name' => 'home',
-            'title' => 'Home',
-            'icon' => 'bi bi-grid',
-            'route' => 'admin.index',
-            'submenu' => [],
-            'number' => 1
-        ],
+//        [
+//            'name' => 'home',
+//            'title' => 'Home',
+//            'icon' => 'bi bi-grid',
+//            'route' => 'admin.index',
+//            'submenu' => [],
+//            'number' => 1
+//        ],
         [
             'name' => 'order',
             'title' => 'Quản lý đơn hàng',
@@ -114,7 +114,7 @@ return [
             'icon' => 'bi bi-grid',
             'route' => 'admin.contact',
             'submenu' => [],
-            'number' => 5
+            'number' => 7
         ],
         [
             'name' => 'contact-newsletter',
@@ -122,7 +122,7 @@ return [
             'icon' => 'bi bi-grid',
             'route' => 'admin.contact-newsletter',
             'submenu' => [],
-            'number' => 6
+            'number' => 8
         ],
         [
             'name' => 'support-staff',
@@ -130,7 +130,7 @@ return [
             'icon' => 'bi bi-grid',
             'route' => 'admin.support-staff.index',
             'submenu' => [],
-            'number' => 6
+            'number' => 9
         ],
         [
             'name' => 'system',
@@ -138,7 +138,7 @@ return [
             'icon' => 'bi bi-grid',
             'route' => 'admin.system.index',
             'submenu' => [],
-            'number' => 7
+            'number' => 10
         ],
         [
             'name' => 'user',
@@ -146,7 +146,15 @@ return [
             'icon' => 'bi bi-grid',
             'route' => 'admin.user.index',
             'submenu' => [],
-            'number' => 8
+            'number' => 11
+        ],
+        [
+            'name' => 'staff',
+            'title' => 'Quản lý nhân viên',
+            'icon' => 'bi bi-grid',
+            'route' => 'admin.role.index',
+            'submenu' => [],
+            'number' => 12
         ],
 
 ]

@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="{{asset('assets/css/date.css')}}">
     <link href="{{asset('assets/css/sweetalert.css')}}" rel="stylesheet" type="text/css"/>
     <style>
+        .pagenavi ul a{
+            line-height: unset;
+        }
         form .input-group {
             margin-bottom: 5px;
         }
@@ -106,7 +109,31 @@
             background: green;
             color: #fff !important;
         }
+        .processing {
+            background: #f4c58f;
+            color: #815621 !important;
+        }
 
+        .success {
+            background: #75a630;
+            color: #fff !important;
+        }
+
+        .canceled,
+        .lack {
+            background: #333;
+            color: #fff !important;
+        }
+        .pagenavi{
+            display: flex;
+            justify-content: center;
+        }
+        @media (max-width: 767px) {
+            td,th{
+                min-width: 120px;
+            }
+
+        }
     </style>
 @stop
 {{--content of page--}}
@@ -122,14 +149,14 @@
     <div class="main-child">
         <div class="container container1000">
             <div class="row">
-                <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="col-12">
                     <h1 class="xbbb" style="margin-top: 0px;font-size: 20px;font-weight: bold">Danh sách đơn hàng</h1>
                     <form method="get" action="{{route('my-order')}}">
-                        <div class="">
-                            <div class="input-group pull-left col-md-4 col-xs-12 col-sm-4" style="margin-right: 10px">
+                        <div >
+                            <div class="input-group pull-left col-md-5 col-xs-12 col-sm-4" style="margin-right: 10px">
                                 <input type="text" name="keyword" value="{{request()->get('keyword')}}" class="form-control" placeholder="Search" autocomplete="off">
                             </div>
-                            <div class="input-group filter-box pull-left col-md-4 col-xs-12 col-sm-4" style="margin-right: 10px">
+                            <div class="input-group filter-box pull-left col-md-5 col-xs-12 col-sm-4" style="margin-right: 10px">
                                 <select name="status" class="form-control status">
                                     <option value="" selected>[Chọn trạng thái]</option>
                                     <option value="0" @if(request()->get('status') === 0) selected @endif>Chờ xác nhận</option>
@@ -149,93 +176,82 @@
                     </form>
                     <div style="clear: both;height: 10px"></div>
                     <div class=" main-order">
-                        <div class="box-body  no-padding">
-                                @if(isset($order) && count($order)>0)
-                                    @foreach($order as $item)
-                                <div class="itemsgiohang"  @if($item->status == 4) style="background: #dad9d9;" @endif  >
-                                    <div class="row">
-                                        <div style="width: 90%; display: flex;justify-content: space-between;align-items:center;margin-left: 15px">
-                                            <div>
-                                                {{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i:s') }}
-                                            </div>
-                                            @if($item->status == 0)
-                                            <a href="{{url('cancel-order/'.$item->id)}}" class="btn btn-danger btn-cancel" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Hủy đơn hàng">Hủy đơn hàng</a>
-                                                @endif
-                                             </div>
-                                        <div class="col-sm-4 col-xs-6">
+                        <div class="mt-5 space-y-2">
+                            <div class="relative overflow-x-auto table-responsive">
+                                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                    <thead
+                                        class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th scope="col" class="px-2 py-2">
+                                            Mã đơn hàng
+                                        </th>
+                                        <th scope="col" class="px-2 py-2">
+                                            Ảnh
+                                        </th>
+                                        <th scope="col" class="px-2 py-2">
+                                            Sản phẩm
+                                        </th>
+                                        <th scope="col" class="px-2 py-2">
+                                            Ngày lên đơn
+                                        </th>
+                                        <th scope="col" class="px-2 py-2">
+                                            Trạng thái
+                                        </th>
+                                        <th scope="col" class="px-2 py-2">
+                                            Ghi chú
+                                        </th>
+                                        <th scope="col" class="px-2 py-2 text-center">
+                                            #
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @if(isset($order) && count($order)>0)
+                                        @foreach($order as $item)
+                                    <tr class="bg-white dark:bg-gray-800 border-b">
+                                        <th scope="row"
+                                            class="px-2 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                            <span
+                                                                class="font-bold text-primary underline">{{$item->code_order}}</span>
+                                        </th>
+                                        <td class="px-2 py-2">
                                             <img src="{{asset($item->product->src)}}"
-                                                 alt="{{$item->product->name}}"
-                                                 style="width: 100px"><br>
-                                        </div>
-                                        <div class="col-sm-6 col-xs-6" style="padding-left: 0px">
-                                            <b>Mã đơn hàng: </b> <span
-                                                style="font-weight:bold;color:#006dad;">{{$item->code_order}}</span><br>
-                                            <b>Mã sản phẩm: </b> <span
+                                                 style="width: 100px;">
+                                        </td>
+                                        <td class="px-2 py-2">
+                                            Mã sản phẩm: <span
                                                 style="color: red;font-weight: bold">{{$item->product->code}}</span><br>
-                                            <b>Tên sản phẩm: </b> <span
+                                            Tên sản phẩm: <span
                                                 style="color: red;font-weight: bold">{{$item->product->name}}</span><br>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 col-xs-12" style="padding: 0">
-                                        <div class="show-note col-sm-6 col-xs-12" style="padding: 0">
-                                            <b>Ghi chú: </b>
-                                            <div class="list-note" style="margin: 6px 0;">
-                                                {!! $item->note1 !!}
-                                            </div>
-                                        </div>
-                                        <div class="show-note col-sm-6 col-xs-12" style="padding: 0">
-                                            <b>Ghi chú của người bán: </b>
-                                            <div class="list-note" style="margin: 6px 0;">
-                                                {!! $item->note2 !!}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <b> Trạng thái: </b>
-                                        <span class="@if($item->status == 0) opened @elseif($item->status == 2 || $item->status == 1) processing @elseif($item->status == 3) success @else cancle @endif">{{$item->status_name}}</span>
-                                    </div>
-                                </div>
+                                        </td>
+                                        <td class="px-2 py-2">{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y H:i:s') }}</td>
+                                        <td class="px-2 py-2">
+                                                            <span
+                                                                class="flex p-[1px] text-xs rounded-lg text-center justify-center items-center bg-green-600 text-white cursor-pointer js_payment_update js_payment_67742 @if($item->status == 0) opened @elseif($item->status == 2 || $item->status == 1) processing @elseif($item->status == 3) success @else cancle @endif"
+                                                                ">{{$item->status_name}}</span>
+                                        </td>
+                                        <td class="px-2 py-2">
+                                            {!! $item->note1 !!}<br>
+                                            <div><b class="font-bold text-red-600" style="color: red;">Ghi chú của người bán: </b> {!! $item->note2 !!}</div><br>
+                                        </td>
+                                        <td class="px-2 py-2">
+                                            @if($item->status == 0)
+                                                <a href="{{url('cancel-order/'.$item->id)}}" class="btn btn-danger btn-cancel" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Hủy đơn hàng">Hủy đơn hàng</a>
+                                            @endif
+                                        </td>
+                                    </tr>
                                     @endforeach
-                                        <div>
-                                            {{ $order->appends(request()->all())->links('web.partials.pagination') }}
-                                        </div>
-                                    @else
-                                    <p style="color: #FF0000;font-size: 16px;margin-top: 30px;text-align: center">Không có dữ liệu</p>
-                                    @endif
-
-                        </div><!-- /.box-body -->
-
-
-                        <div class="box-footer clearfix">
-                        </div>
-
-                    </div>
-                </div>
-                <div style="clear: both" class="visible-xs"></div>
-                <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="sidebar">
-                        <div class="sidebar-admin">
-                            <div class="avarta">
-                                @if($user->avatar)
-                                    <img src="{{asset($user->avatar)}}">
-                                @else
-                                    <img src="{{asset('assets/images/ll.png')}}">
-                                @endif
+                                        @endif
+                                    </tbody>
+                                </table>
+                                <div class="d-flex justify-content-center w-100">
+                                    {{ $order->appends(request()->all())->links('web.partials.pagination') }}
+                                </div>
                             </div>
-                            <h3 class="title-name"></h3>
-
-                            <p class="date">Ngày tham
-                                gia: {{ \Carbon\Carbon::parse($user->created_at)->format('d/m/Y') }} </p>
-                            <ul>
-                                <li><a href="{{route('profile')}}" title="">Tài khoản của tôi<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="{{route('password')}}" title="">Đổi mật khẩu<i class="fas fa-chevron-right"></i></a></li>
-                                <li class="active"><a href="{{route('my-order')}}" title="">Đơn mua<i class="fas fa-chevron-right"></i></a></li>
-                                <li><a href="{{route('logout')}}" title="">Thoát<i class="fas fa-chevron-right"></i></a></li>
-                            </ul>
                         </div>
+
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

@@ -10,6 +10,7 @@ use \App\Http\Controllers\admin\SystemController;
 use \App\Http\Controllers\admin\UserController;
 use \App\Http\Controllers\admin\ProductController;
 use \App\Http\Controllers\admin\OrderController;
+use \App\Http\Controllers\admin\RoleController;
 
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
@@ -86,6 +87,15 @@ Route::middleware('check-admin-auth')->group(function () {
         Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit');
         Route::post('update/{id}', [UserController::class, 'update'])->name('update');
         Route::get('status-active/{id}', [UserController::class,'statusActive'])->name('status-active');
+    });
+
+    Route::prefix('role')->name('role.')->group(function (){
+        Route::get('', [RoleController::class, 'index'])->name('index');
+        Route::get('create', [RoleController::class,'create'])->name('create');
+        Route::post('store', [RoleController::class,'store'])->name('store');
+        Route::get('delete/{id}', [RoleController::class,'delete']);
+        Route::get('edit/{id}', [RoleController::class,'edit'])->name('edit');
+        Route::post('update/{id}', [RoleController::class, 'update'])->name('update');
     });
 
     Route::get('contact', [SystemController::class, 'contact'])->name('contact');

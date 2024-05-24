@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -12,6 +13,7 @@ class DashboardController extends Controller
         $titlePage = 'Trang chủ';
         $page_menu = 'Home';
         $page_sub = null;
+
         return view('admin.index', compact('titlePage','page_menu','page_sub'));
     }
 

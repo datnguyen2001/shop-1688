@@ -65,7 +65,7 @@ class ProfileController extends Controller
         $user = UserModel::find(Auth::id());
         $query = OrderModel::where('user_id', $user->id);
         if ($request->get('status')) {
-            $query->where('status', $request->input('status'));
+            $query->where('status', $request->get('status'));
         }
 
         if ($request->get('keyword')) {

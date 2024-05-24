@@ -32,7 +32,7 @@ class LoginController extends Controller
             if (empty($user_active)) {
                 return redirect()->back()->with('error', 'Tài khoản của bạn chưa được kích hoạt');
             }
-            if (Auth::attempt($arr)) {
+            if (Auth::guard('web')->attempt($arr)) {
                     return redirect()->route('home');
             } else {
                 return back()->with(['error' => 'Tài khoản hoặc mật khẩu không đúng']);
@@ -102,7 +102,7 @@ class LoginController extends Controller
 
     public function logout()
     {
-        Auth::logout();
+        Auth::guard('web')->logout();
         return redirect()->route('login');
     }
 }
