@@ -45,10 +45,12 @@
 
                     <div class="card" >
                         <div class="card-body d-flex justify-content-end" style="padding: 20px">
-                            <form class="d-flex align-items-center w-50" method="get"
+                            <form class="d-flex align-items-center w-100" method="get"
                                   action="{{url('admin/order/index/'.$status)}}">
                                 <input name="search" type="text" value="{{request()->get('search')}}"
                                        placeholder="Tìm kiếm theo mã đơn hàng, người mua, số điện thoại" class="form-control" style="margin-right: 16px">
+                                <input type="datetime-local" class="form-control w-50" style="margin-right: 16px" name="date_start" value="{{ request()->get('date_start') }}">
+                                <input type="datetime-local" class="form-control w-50" name="date_end" value="{{ request()->get('date_end') }}">
                                 <button class="btn btn-info" style="margin-left: 15px"><i class="bi bi-search"></i>
                                 </button>
                                 <a href="{{url('admin/order/index/'.$status)}}" class="btn btn-danger"
