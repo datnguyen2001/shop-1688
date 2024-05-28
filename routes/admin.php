@@ -25,6 +25,7 @@ Route::middleware('check-admin-auth')->group(function () {
         Route::get('detail/{id}', [OrderController::class,'orderDetail'])->name('detail');
         Route::get('status/{order_id}/{status_id}', [OrderController::class,'statusOrder'])->name('status');
         Route::post('save-note/{id}', [OrderController::class, 'saveNote'])->name('save-note');
+        Route::get('delete/{id}', [OrderController::class, 'delete']);
     });
 
     Route::prefix('category')->name('category.')->group(function () {

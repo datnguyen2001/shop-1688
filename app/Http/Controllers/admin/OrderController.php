@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Exports\OrderExport;
 use App\Http\Controllers\Controller;
 use App\Models\OrderModel;
 use App\Models\ProductColorModel;
 use App\Models\ProductModel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class OrderController extends Controller
 {
@@ -37,7 +39,7 @@ class OrderController extends Controller
             } elseif ($date_end) {
                 $listData = $listData->where('created_at', '<=', $date_end);
             }
-
+            $dataExport = $listData->orderBy('created_at', 'desc')->get();
             $listData = $listData->orderBy('created_at', 'desc')->paginate(20);
             foreach ($listData as $item) {
                 $item->user = UserModel::find($item->user_id);
@@ -51,8 +53,16 @@ class OrderController extends Controller
             $order_complete = OrderModel::where('status', 3)->count();
             $order_cancel = OrderModel::where('status', 4)->count();
             $return_refund = OrderModel::where('status', 5)->count();
-            return view('admin.order.index', compact('titlePage', 'page_menu', 'listData', 'page_sub', 'order_pending', 'order_confirm',
-                'order_delivery', 'order_complete', 'order_cancel', 'status', 'order_all', 'return_refund'));
+            if ($request->excel == 2) {
+                foreach ($dataExport as $val){
+                    $val->user = UserModel::find($val->user_id);
+                    $val->product = ProductModel::find($val->product_id);
+                }
+                return Excel::download(new OrderExport($dataExport), 'donhang.xlsx');
+            } else {
+                return view('admin.order.index', compact('titlePage', 'page_menu', 'listData', 'page_sub', 'order_pending', 'order_confirm',
+                    'order_delivery', 'order_complete', 'order_cancel', 'status', 'order_all', 'return_refund'));
+            }
         } catch (\Exception $exception) {
             dd($exception);
         }
@@ -89,6 +99,13 @@ class OrderController extends Controller
         } catch (\Exception $exception) {
             return back()->with(['error' => $exception->getMessage()]);
         }
+    }
+
+    public function delete($id)
+    {
+        $product = OrderModel::find($id);
+        $product->delete();
+        return \redirect()->back()->with(['success' => 'Xóa đơn hàng thành công']);
     }
 
     public function statusOrder($order_id, $status_id)
