@@ -68,11 +68,9 @@ class UserController extends Controller
     public function delete($id)
     {
         $user = UserModel::find($id);
-        if ($user->avatar) {
-            unlink($user->avatar);
-        }
-        $user->delete();
-        return \redirect()->route('admin.user.index')->with(['success' => 'Xóa người dùng thành công']);
+        $user->is_active = 0;
+        $user->save();
+        return \redirect()->route('admin.user.index')->with(['success' => 'Khóa người dùng thành công']);
     }
 
     public function edit($id)

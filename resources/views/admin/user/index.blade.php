@@ -54,7 +54,7 @@
                                                     <a href="{{url('admin/user/edit/'.$value->id)}}" class="btn btn-icon btn-light btn-hover-success btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Cập nhật">
                                                         <i class="bi bi-pencil-square "></i>
                                                     </a>
-                                                    <a href="{{url('admin/user/delete/'.$value->id)}}" class="btn btn-delete btn-icon btn-light btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Xóa">
+                                                    <a href="{{url('admin/user/delete/'.$value->id)}}" class="btn btn-delete btn-icon btn-light btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Khóa tk">
                                                         <i class="bi bi-trash "></i>
                                                     </a>
                                                     @if($value->is_active == 0)
@@ -85,10 +85,10 @@
     <script>
         $('a.btn-delete').confirm({
             title: 'Xác nhận!',
-            content: 'Bạn có chắc chắn muốn xóa bản ghi này?',
+            content: 'Bạn có chắc chắn muốn khóa tài khoản này?',
             buttons: {
                 ok: {
-                    text: 'Xóa',
+                    text: 'Khóa',
                     btnClass: 'btn-danger',
                     action: function(){
                         location.href = this.$target.attr('href');
