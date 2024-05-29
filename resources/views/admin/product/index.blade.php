@@ -98,7 +98,7 @@
     <script>
         $('a.btn-delete').confirm({
             title: 'Xác nhận!',
-            content: 'Bạn có chắc chắn muốn xóa bản ghi này?',
+            content: 'Bạn có chắc chắn muốn xóa bản ghi này?, Xóa sản phẩm này thì các đơn hàng có sản phẩm này cũng bị xóa? Bạn có muốn xóa không.',
             buttons: {
                 ok: {
                     text: 'Xóa',

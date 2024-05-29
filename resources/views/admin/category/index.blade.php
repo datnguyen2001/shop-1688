@@ -70,7 +70,7 @@
     <script>
         $('a.btn-delete').confirm({
             title: 'Xác nhận!',
-            content: 'Bạn có chắc chắn muốn xóa bản ghi này?',
+            content: 'Bạn có chắc chắn muốn xóa bản ghi này?, Xóa danh mục này là xóa các sản phẩm liên quan đến danh mục này? Bạn có muốn xóa không.',
             buttons: {
                 ok: {
                     text: 'Xóa',

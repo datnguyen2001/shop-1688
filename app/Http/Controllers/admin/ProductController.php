@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CategoryModel;
+use App\Models\OrderModel;
 use App\Models\ProductColorModel;
 use App\Models\ProductImageModel;
 use App\Models\ProductModel;
@@ -101,6 +102,10 @@ class ProductController extends Controller
                 unlink($img->src);
             }
             $img->delete();
+        }
+        $order = OrderModel::where('product_id',$product->id)->get();
+        foreach ($order as $orders){
+            $orders->delete();
         }
         $product->delete();
         return \redirect()->route('admin.product.index')->with(['success' => 'Xóa sản phẩm thành công']);
