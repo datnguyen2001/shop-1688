@@ -20,25 +20,25 @@
                         <div class="card-body d-flex align-items-center flex-wrap"
                              style="padding-top: 20px">
                             <a href="{{url('admin/order/index/all')}}" type="button"
-                               class="btn btn-outline-secondary mb @if($status == 'all') active @endif"> Tất cả đơn hàng
+                               class="btn btn-outline-secondary mb-3 @if($status == 'all') active @endif"> Tất cả đơn hàng
                                 <span style="font-weight: 700">{{$order_all}}</span></a>
                             <a href="{{url('admin/order/index/0')}}"
-                               class="btn btn-outline-warning mx-3 @if($status == 0) active @endif">Chờ xác nhận <span
+                               class="btn btn-outline-warning mx-3 mb-3 @if($status == 0) active @endif">Chờ xác nhận <span
                                     style="font-weight: 700">{{$order_pending}}</span></a>
                             <a href="{{url('admin/order/index/1')}}" type="button"
-                               class="btn btn-outline-info @if($status == 1) active @endif">Chờ lấy hàng <span
-                                    style="font-weight: 700">{{$order_confirm}}</span></a>
-                            <a href="{{url('admin/order/index/2')}}" type="button"
-                               class="btn btn-outline-primary mx-3 @if($status == 2) active @endif">Đang vận chuyển <span
-                                    style="font-weight: 700">{{$order_delivery}}</span></a>
+                               class="btn btn-outline-info mb-3 mx-3 @if($status == 1) active @endif">Chờ lấy hàng <span
+                                    style="font-weight: 700;margin-left: 0">{{$order_confirm}}</span></a>
+{{--                            <a href="{{url('admin/order/index/2')}}" type="button"--}}
+{{--                               class="btn btn-outline-primary mx-3 mb-3 @if($status == 2) active @endif">Đang vận chuyển <span--}}
+{{--                                    style="font-weight: 700">{{$order_delivery}}</span></a>--}}
                             <a href="{{url('admin/order/index/3')}}" type="button"
-                               class="btn btn-outline-success @if($status == 3) active @endif">Đơn hàng hoàn thành <span
+                               class="btn btn-outline-success mb-3 @if($status == 3) active @endif">Hàng về đủ <span
                                     style="font-weight: 700">{{$order_complete}}</span></a>
                             <a href="{{url('admin/order/index/4')}}" type="button"
-                               class="btn btn-outline-danger mx-3 @if($status == 4) active @endif">Đơn huỷ <span
+                               class="btn btn-outline-danger mx-3 mb-3 @if($status == 4) active @endif">Đơn huỷ <span
                                     style="font-weight: 700">{{$order_cancel}}</span></a>
                             <a href="{{url('admin/order/index/5')}}" type="button"
-                               class="btn btn-outline-danger mt-3 @if($status == 5) active @endif">Hàng bị thiếu <span
+                               class="btn btn-outline-danger mb-3 @if($status == 5) active @endif">Hàng bị thiếu <span
                                     style="font-weight: 700">{{$return_refund}}</span></a>
                         </div>
                     </div>
@@ -126,8 +126,8 @@
                                                             </button>
                                                         </a>
                                                     @elseif($value->status == 1)
-                                                        <a href="{{url('admin/order/status/'.$value->id.'/2')}}">
-                                                            <button type="submit" class="btn btn-primary mb-2">Giao hàng
+                                                        <a href="{{url('admin/order/status/'.$value->id.'/3')}}">
+                                                            <button type="submit" class="btn btn-primary mb-2">Hàng về đủ
                                                             </button>
                                                         </a>
                                                         <a href="{{url('admin/order/status/'.$value->id.'/4')}}">
@@ -138,19 +138,19 @@
                                                             <button type="submit" class="btn btn-warning">Hàng bị thiếu
                                                             </button>
                                                         </a>
-                                                    @elseif($value->status == 2)
-                                                        <a href="{{url('admin/order/status/'.$value->id.'/3')}}">
-                                                            <button type="submit" class="btn btn-primary mb-2">Hoàn thành đơn
-                                                            </button>
-                                                        </a>
-                                                        <a href="{{url('admin/order/status/'.$value->id.'/4')}}">
-                                                            <button type="submit" class="btn btn-danger mb-2">Hủy đơn hàng
-                                                            </button>
-                                                        </a>
-                                                        <a href="{{url('admin/order/status/'.$value->id.'/5')}}">
-                                                            <button type="submit" class="btn btn-warning">Hàng bị thiếu
-                                                            </button>
-                                                        </a>
+{{--                                                    @elseif($value->status == 2)--}}
+{{--                                                        <a href="{{url('admin/order/status/'.$value->id.'/3')}}">--}}
+{{--                                                            <button type="submit" class="btn btn-primary mb-2">Hoàn thành đơn--}}
+{{--                                                            </button>--}}
+{{--                                                        </a>--}}
+{{--                                                        <a href="{{url('admin/order/status/'.$value->id.'/4')}}">--}}
+{{--                                                            <button type="submit" class="btn btn-danger mb-2">Hủy đơn hàng--}}
+{{--                                                            </button>--}}
+{{--                                                        </a>--}}
+{{--                                                        <a href="{{url('admin/order/status/'.$value->id.'/5')}}">--}}
+{{--                                                            <button type="submit" class="btn btn-warning">Hàng bị thiếu--}}
+{{--                                                            </button>--}}
+{{--                                                        </a>--}}
                                                     @endif
                                                     @if($value->status == 4)
                                                         <a href="{{url('admin/order/status/'.$value->id.'/1')}}">
@@ -158,13 +158,9 @@
                                                             </button>
                                                         </a>
                                                     @endif
-                                                    @if($value->status != 4 && $value->status != 0 && $value->status != 5 && $value->status != 3 && $value->type_payment == 2)
-                                                        <a href="{{url('admin/order/status/'.$value->id.'/2')}}">
-                                                            <button type="submit" class="btn btn-primary mb-2">Giao hàng
-                                                            </button>
-                                                        </a>
+                                                    @if($value->status == 5)
                                                         <a href="{{url('admin/order/status/'.$value->id.'/3')}}">
-                                                            <button type="submit" class="btn btn-primary">Hoàn thành đơn
+                                                            <button type="submit" class="btn btn-primary">Hàng về đủ
                                                             </button>
                                                         </a>
                                                     @endif

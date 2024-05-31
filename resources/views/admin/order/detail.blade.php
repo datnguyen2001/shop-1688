@@ -134,8 +134,8 @@
                                             <button type="submit" class="btn btn-warning">Huỷ bị thiếu</button>
                                         </a>
                                     @elseif($listData->status == 1)
-                                        <a href="{{url('admin/order/status/'.$listData->id.'/2')}}">
-                                            <button type="submit" class="btn btn-primary">Giao hàng</button>
+                                        <a href="{{url('admin/order/status/'.$listData->id.'/3')}}">
+                                            <button type="submit" class="btn btn-primary">Hàng về đủ</button>
                                         </a>
                                         <a href="{{url('admin/order/status/'.$listData->id.'/4')}}">
                                             <button type="submit" class="btn btn-danger">Huỷ đơn hàng</button>
@@ -145,7 +145,7 @@
                                         </a>
                                     @elseif($listData->status == 2)
                                         <a href="{{url('admin/order/status/'.$listData->id.'/3')}}">
-                                            <button type="submit" class="btn btn-primary">Hoàn thành đơn hàng</button>
+                                            <button type="submit" class="btn btn-primary">Hàng về đủ</button>
                                         </a>
                                         <a href="{{url('admin/order/status/'.$listData->id.'/4')}}">
                                             <button type="submit" class="btn btn-danger">Hủy đơn hàng
@@ -161,11 +161,11 @@
                                             </a>
                                         @endif
                                         @if($listData->status == 5)
-                                            <a href="{{url('admin/order/status/'.$listData->id.'/2')}}">
-                                                <button type="submit" class="btn btn-primary">Giao hàng</button>
-                                            </a>
+{{--                                            <a href="{{url('admin/order/status/'.$listData->id.'/2')}}">--}}
+{{--                                                <button type="submit" class="btn btn-primary">Giao hàng</button>--}}
+{{--                                            </a>--}}
                                             <a href="{{url('admin/order/status/'.$listData->id.'/3')}}">
-                                                <button type="submit" class="btn btn-success">Hoàn thành đơn hàng</button>
+                                                <button type="submit" class="btn btn-success">Hàng về đủ</button>
                                             </a>
                                         @endif
                                 </div>

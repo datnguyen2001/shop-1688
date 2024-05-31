@@ -161,8 +161,8 @@
                                     <option value="" selected>[Chọn trạng thái]</option>
                                     <option value="0" @if(request()->get('status') === 0) selected @endif>Chờ xác nhận</option>
                                     <option value="1" @if(request()->get('status') === 1) selected @endif>Chờ lấy hàng</option>
-                                    <option value="2" @if(request()->get('status') === 2) selected @endif>Đang vận chuyển</option>
-                                    <option value="3" @if(request()->get('status') === 3) selected @endif>Đã hoàn thành</option>
+{{--                                    <option value="2" @if(request()->get('status') === 2) selected @endif>Đang vận chuyển</option>--}}
+                                    <option value="3" @if(request()->get('status') === 3) selected @endif>Hàng về đủ</option>
                                     <option value="4" @if(request()->get('status') === 4) selected @endif>Đã hủy</option>
                                     <option value="5" @if(request()->get('status') === 5) selected @endif>Hàng bị thiếu</option>
                                 </select>

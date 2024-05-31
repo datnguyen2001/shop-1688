@@ -108,7 +108,7 @@ class ProfileController extends Controller
         } elseif ($item->status == 2) {
             $val_status = 'Đang vận chuyển';
         } elseif ($item->status == 3) {
-            $val_status = 'Đã hoàn thành';
+            $val_status = 'Hàng về đủ';
         } elseif ($item->status == 4) {
             $val_status = 'Đã hủy';
         } else {
