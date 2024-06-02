@@ -43,6 +43,7 @@
                                     @if(count($listData) > 0)
                                         <div>
                                             <div class="d-flex w-100 align-items-center text-center text-white font-size-16" style="background: #4154f1;padding: 5px 0">
+                                                <div style="width: 15%">Mã sản phẩm</div>
                                                 <div style="width: 15%">Hình ảnh</div>
                                                 <div style="width: 35%">Tên sản phẩm </div>
                                                 <div style="width: 20%">Danh mục </div>
@@ -52,6 +53,9 @@
                                             <div class="w-100 bg-white mt-10">
                                                 @foreach($listData as $item)
                                                     <div class="w-100 d-flex mb-5 pt-2 pb-2 content__product align-items-center">
+                                                        <div style="width: 15%" class="d-flex justify-content-center">
+                                                            <p>{{$item->code}}</p>
+                                                        </div>
                                                         <div style="width: 15%" class="d-flex justify-content-center">
                                                             <img src="{{asset($item->src)}}" alt="" class="w-75 mr-3" style="border-radius: 4px">
                                                         </div>

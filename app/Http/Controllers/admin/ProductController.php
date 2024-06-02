@@ -19,7 +19,8 @@ class ProductController extends Controller
         $page_menu = 'product';
         $page_sub = null;
         if (isset($request->key_search)) {
-            $listData = ProductModel::Where('name', 'like', '%' . $request->get('key_search') . '%')
+            $listData = ProductModel::where('name', 'like', '%' . $request->get('key_search') . '%')
+                ->orWhere('code', 'like', '%' . $request->get('key_search') . '%')
                 ->orderBy('created_at', 'desc')->paginate(20);
         } else {
             $listData = ProductModel::orderBy('created_at', 'desc')->paginate(20);
