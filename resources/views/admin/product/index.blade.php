@@ -33,7 +33,7 @@
                                 <form class="d-flex align-items-center w-50" method="get"
                                       action="{{route('admin.product.index')}}">
                                     <input name="key_search" type="text" value="{{request()->get('key_search')}}"
-                                           placeholder="Tìm kiếm tên sản phẩm" class="form-control" style="margin-right: 16px">
+                                           placeholder="Tìm kiếm tên sản phẩm, mã sản phẩm" class="form-control" style="margin-right: 16px">
                                     <button class="btn btn-info" style="padding-top: 10px;padding-bottom: 10px"><i class="bi bi-search"></i></button>
                                     <a href="{{route('admin.product.index')}}" class="btn btn-danger" style="margin-left: 15px">Hủy </a>
                                 </form>

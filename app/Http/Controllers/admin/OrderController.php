@@ -25,9 +25,13 @@ class OrderController extends Controller
             }
             $key_search = $request->get('search');
             if (isset($key_search)) {
-                $listData = $listData->where(function ($listData) use ($key_search) {
-                    return $listData->where('name', 'like', '%' . $key_search . '%')->orWhere('phone', 'like', '%' . $key_search . '%')
-                        ->orWhere('code_order', 'LIKE', '%' . $key_search . '%');
+                $listData = $listData->where(function ($query) use ($key_search) {
+                    $query->where('name', 'like', '%' . $key_search . '%')
+                        ->orWhere('phone', 'like', '%' . $key_search . '%')
+                        ->orWhere('code_order', 'LIKE', '%' . $key_search . '%')
+                        ->orWhereHas('product', function ($query) use ($key_search) {
+                            $query->where('code', 'LIKE', '%' . $key_search . '%');
+                        });
                 });
             }
             $date_start = $request->get('date_start');

@@ -9,7 +9,7 @@
                 <div class="clearfix" style="height: 10px"></div>
                 <form method="get" action="{{route('search')}}">
                     <div class="form-group">
-                        <input type="text" placeholder="Tên sản phẩm" name="key_search" class="form-control" value="">
+                        <input type="text" placeholder="Tên sản phẩm, mã sản phẩm" name="key_search" class="form-control" value="">
                     </div>
                     <div class="form-group">
                         <select class="form-control" name="category_id">
