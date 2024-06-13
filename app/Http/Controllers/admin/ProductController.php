@@ -67,7 +67,7 @@ class ProductController extends Controller
             $file->move('upload/product/', $image);
             $product = new ProductModel([
                 'name' => $request->get('name'),
-                'slug' => Str::slug($request->get('name')),
+                'slug' => Str::slug($request->get('name')).'-'.Str::slug($request->get('code')),
                 'code' => $request->get('code'),
                 'src' => $image,
                 'category_id' => $category_id??null,
@@ -159,7 +159,7 @@ class ProductController extends Controller
             }
             $product->category_id = $category_id??null;
             $product->name = $request->get('name');
-            $product->slug = Str::slug($request->get('name'));
+            $product->slug = Str::slug($request->get('name')).'-'.Str::slug($request->get('code'));
             $product->code = $request->get('code');
             $product->price = str_replace(",", "", $request->get('price'));
             $product->content = $request->get('content');

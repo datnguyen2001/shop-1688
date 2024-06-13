@@ -65,7 +65,7 @@ $(document).ready(function () {
             let name = 'variant[' + i + '][name]';
             let select = $(".data-variant").eq(i).find(".form-control.name");
             select.attr("name", name);
-            let src = 'variant[' + i + '][src]';
+            let src = 'variant[' + i + '][src_color]';
             let select_src = $(".data-variant").eq(i).find(".form-control.src");
             select_src.attr("name", src);
         }
