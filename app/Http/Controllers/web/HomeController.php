@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function home()
     {
         $category = CategoryModel::where('parent_id',0)->get();
-        $product_category = CategoryModel::where('parent_id',0)->get();
+        $product_category = CategoryModel::where('parent_id',0)->orderBy('created_at','desc')->get();
         foreach ($product_category as $item){
             $cate_item = CategoryModel::where('parent_id',$item->id)->pluck('id');
             $item->product = ProductModel::whereIn('category_id',$cate_item->toArray())->orWhere('category_id',$item->id)->where('display',1)->take(12)->get();
