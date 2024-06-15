@@ -104,6 +104,7 @@ class UserController extends Controller
             }else{
                 $is_active = 1;
             }
+            $user->name = $request->get('name');
             $user->name_zalo = $request->get('name_zalo');
             $user->phone_zalo = $request->get('phone_zalo');
             $user->consignee_name = $request->get('consignee_name');
