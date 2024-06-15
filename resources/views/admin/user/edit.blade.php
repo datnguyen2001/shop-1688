@@ -30,7 +30,7 @@
                                 <div class="row mb-3">
                                     <label for="inputText" class="col-sm-3 col-form-label">Tên tài khoản</label>
                                     <div class="col-sm-8">
-                                        <input type="text" name="name" value="{{$user->name}}" readonly
+                                        <input type="text" name="name" value="{{$user->name}}"
                                                class="form-control">
                                     </div>
                                 </div>
