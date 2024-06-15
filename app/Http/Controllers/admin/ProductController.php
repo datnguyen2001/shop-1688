@@ -44,7 +44,8 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         try {
-            $attribute = $request->variant;
+            $attribute = $request->all();
+            dd($attribute);
             $category = CategoryModel::find($request->get('category'));
             if (empty($category)) {
                 return back()->with(['error' => 'Vui lòng chọn danh mục để tiếp tục']);

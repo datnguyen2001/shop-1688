@@ -43,9 +43,11 @@ $(document).ready(function () {
             }
         });
     });
-
+    let isLoading = false;
     $(document).on("click", ".btn-add-color", function () {
-        let parent = $(this).closest(".card-body");
+        let parent = $(this).closest(".card-body-color");
+        if (isLoading) return;
+        isLoading = true;
         $.ajax({
             url: window.location.origin + '/api/variant-color',
             type: 'post',
@@ -53,6 +55,9 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 parent.append(data.html);
+            },
+            complete: function() {
+                isLoading = false;
             }
         });
     });

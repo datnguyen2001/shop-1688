@@ -145,7 +145,7 @@
                             <div class="card-header bg-primary text-white">
                                 Thêm màu sản phẩm
                             </div>
-                            <div class="card-body p-0 bg-white">
+                            <div class="card-body card-body-color p-0 bg-white">
                                 @foreach($product_color as $key => $item)
                                 <div class="mt-3 border-bottom data-variant pb-3">
                                     <input value="{{$item->id}}" hidden name="variant[{{$key}}][attribute_id]">

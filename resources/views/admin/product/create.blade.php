@@ -110,7 +110,7 @@
                             <div class="card-header bg-primary text-white">
                                 Thêm màu sản phẩm
                             </div>
-                            <div class="card-body p-0 bg-white">
+                            <div class="card-body card-body-color p-0 bg-white">
                                 <div class="mt-3 border-bottom data-variant pb-3">
                                     <div class="row m-0">
                                         <div class="col-lg-3 p-1">
