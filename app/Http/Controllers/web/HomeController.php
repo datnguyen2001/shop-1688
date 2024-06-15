@@ -20,7 +20,8 @@ class HomeController extends Controller
             $cate_item = CategoryModel::where('parent_id',$item->id)->pluck('id');
             $item->product = ProductModel::whereIn('category_id',$cate_item->toArray())->orWhere('category_id',$item->id)->where('display',1)->orderBy('created_at','desc')->take(12)->get();
         }
-        return view('web.home.index',compact('category','product_category'));
+        $product_hot = ProductModel::where('display',1)->where('is_hot',1)->orderBy('created_at','desc')->take(12)->get();
+        return view('web.home.index',compact('category','product_category','product_hot'));
     }
 
     public function blog($slug)
@@ -114,6 +115,13 @@ class HomeController extends Controller
         $contact->type = 2;
         $contact->save();
         return back()->with(['success'=>'Đăng ký nhận bản tin thành công']);
+    }
+
+    public function productHot()
+    {
+        $product = ProductModel::where('display',1)->where('is_hot',1)->paginate(28);
+
+        return view('web.category.list_hot',compact('product'));
     }
 
 }

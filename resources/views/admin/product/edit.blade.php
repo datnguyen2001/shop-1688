@@ -185,6 +185,16 @@
                                 </div>
                             </div>
                         </div>
+                            <div class="row mb-4">
+                                <label class="col-sm-3 col-form-label">Sản phẩm hot: </label>
+                                <div class="col-sm-8">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" name="is_hot" type="checkbox" @if($product->is_hot == 1) checked @endif
+                                        id="flexSwitchCheckChecked">
+                                        <label class="form-check-label" for="flexSwitchCheckChecked">Hiện sản phẩm</label>
+                                    </div>
+                                </div>
+                            </div>
 
                         <div class="d-flex justify-content-center mt-3">
                             <button type="submit" class="btn btn-success" style="margin-right: 15px">Cập nhật</button>

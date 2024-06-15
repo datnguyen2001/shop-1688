@@ -36,6 +36,7 @@ Route::get('/danh-muc/{slug}', [HomeController::class, 'category'])->name('categ
 Route::get('/tim-kiem-san-pham', [HomeController::class, 'search'])->name('search');
 Route::get('/chi-tiet-san-pham/{slug}', [ProductController::class, 'detailProduct'])->name('detail-product');
 Route::post('save-order', [ProductController::class,'saveOrder'])->name('save-order');
+Route::get('/san-pham-ban-chay', [HomeController::class, 'productHot'])->name('product-hot');
 
 
 Route::middleware('auth')->group(function () {

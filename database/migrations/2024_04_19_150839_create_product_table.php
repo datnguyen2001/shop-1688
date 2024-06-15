@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('price');
             $table->longText('content')->nullable();
             $table->string('display')->default(1);
+            $table->integer('is_hot')->default(0);
             $table->timestamps();
         });
     }

@@ -61,6 +61,10 @@ class ProductController extends Controller
             if ($request->get('display') == 'on') {
                 $display = 1;
             }
+            $is_hot = 0;
+            if ($request->get('is_hot') == 'on') {
+                $is_hot = 1;
+            }
             $file = $request->file('file_product');
             $extension = $file->getClientOriginalExtension();
             $image = 'upload/product/' . Str::random(40) . '.' . $extension;
@@ -74,6 +78,7 @@ class ProductController extends Controller
                 'price' => str_replace(",", "", $request->get('price')),
                 'content' => $request->get('content'),
                 'display' => $display,
+                'is_hot' => $is_hot,
             ]);
             $product->save();
             $this->add_img_product($request, $product->id);
@@ -149,6 +154,10 @@ class ProductController extends Controller
             if ($request->display == 'on') {
                 $display = 1;
             }
+            $is_hot = 0;
+            if ($request->is_hot == 'on') {
+                $is_hot = 1;
+            }
             if (isset($request->file_product)) {
                 unlink($product->src);
                 $file = $request->file('file_product');
@@ -164,6 +173,7 @@ class ProductController extends Controller
             $product->price = str_replace(",", "", $request->get('price'));
             $product->content = $request->get('content');
             $product->display = $display;
+            $product->is_hot = $is_hot;
 
             $product->save();
             $this->add_img_product($request, $product->id);

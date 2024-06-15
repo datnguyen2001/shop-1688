@@ -38,7 +38,38 @@
             </div>
         </div>
     </section>
+    <section class="why-choose">
+        <div class="container">
+            <div class="main-content-product">
+                <a href="{{route('product-hot')}}" class="title-pr">SẢN PHẨM BÁN CHẠY</a>
+                <div class="content-product">
+                    <div class="row">
+                        @foreach($product_hot as $item)
+                            <div class="col-md-3 col-sm-6 col-xs-6">
+                                <div class="item-product wow fadeInUp">
+                                    <div class="image">
+                                        <a href="{{route('detail-product',$item->slug)}}"
+                                           title="{{$item->name}}"><img
+                                                src="{{asset($item->src)}}"
+                                                alt="{{$item->name}}"></a>
+                                    </div>
+                                    <div class="nav-img">
+                                        <h3 class="title"><a href="{{route('detail-product',$item->slug)}}"
+                                                             title="{{$item->name}}">{{$item->name}}</a>
+                                        </h3>
+                                        <p class="masp">Mã sản
+                                            phẩm: {{$item->code}}</p>
+                                        <p class="price">Giá <span>{{number_format($item->price)}} đ</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
 
+            </div>
+        </div>
+    </section>
     @if(isset($product_category) && count($product_category)>0)
         @foreach($product_category as $pro)
             <section class="why-choose">
