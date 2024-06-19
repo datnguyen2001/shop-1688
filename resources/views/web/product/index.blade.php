@@ -193,7 +193,7 @@ Nhập Enter để xuống dòng"></textarea>
                                 </div>
                             </div>
                         </div>
-                        <h3 class="title1" style="margin-bottom: 0">Thông tin sản phẩm</h3>
+                        <h3 class="title1" style="margin-bottom: 0">Thông tin sản phẩm <img src="{{asset('assets/images/clipboard.svg')}}" style="width: 18px;margin-left: 15px;cursor: pointer" onclick="copyContent()"></h3>
                         <div class="information-product" style="padding-top: 0">
                             {!! $product->content !!}
                         </div>
@@ -297,13 +297,35 @@ Nhập Enter để xuống dòng"></textarea>
 
 
         function downloadAllImages() {
-            var imageUrl = document.getElementById('imageUrl').value.trim();
-            var hiddenAnchor = document.createElement('a');
-            hiddenAnchor.href = window.location.origin + '/' + imageUrl;
-            hiddenAnchor.download = 'image.jpg';
-            document.body.appendChild(hiddenAnchor);
-            hiddenAnchor.click();
-            document.body.removeChild(hiddenAnchor);
+            // var imageUrl = document.getElementById('imageUrl').value.trim();
+            // var hiddenAnchor = document.createElement('a');
+            // hiddenAnchor.href = window.location.origin + '/' + imageUrl;
+            // hiddenAnchor.download = 'image.jpg';
+            // document.body.appendChild(hiddenAnchor);
+            // hiddenAnchor.click();
+            // document.body.removeChild(hiddenAnchor);
+            var images = @json($product_color).map(color => color.src);
+            images.forEach((image, index) => {
+                setTimeout(() => {
+                    var hiddenAnchor = document.createElement('a');
+                    hiddenAnchor.href = window.location.origin + '/' + image;
+                    hiddenAnchor.download = 'image_' + (index + 1) + '.jpg';
+                    document.body.appendChild(hiddenAnchor);
+                    hiddenAnchor.click();
+                    document.body.removeChild(hiddenAnchor);
+                }, index * 1000);
+            });
+        }
+    </script>
+    <script>
+        function copyContent() {
+            var textarea = document.createElement("textarea");
+            var content = document.querySelector('.information-product').innerText;
+            textarea.value = content;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
         }
     </script>
 @stop
