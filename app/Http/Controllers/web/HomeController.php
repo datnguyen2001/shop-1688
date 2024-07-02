@@ -81,7 +81,7 @@ class HomeController extends Controller
         }
         $cate = CategoryModel::where('slug',$slug)->first();
         $cate_item = CategoryModel::where('parent_id',$cate->id)->pluck('id')->toArray();
-        $product = ProductModel::where('category_id',$cate_item)->orwhere('category_id',$cate->id)->where('display',1)->paginate(28);
+        $product = ProductModel::where('category_id',$cate_item)->orwhere('category_id',$cate->id)->where('display',1)->orderBy('created_at','desc')->paginate(28);
 
         return view('web.category.index',compact('category','product','cate'));
     }
@@ -119,7 +119,7 @@ class HomeController extends Controller
 
     public function productHot()
     {
-        $product = ProductModel::where('display',1)->where('is_hot',1)->paginate(28);
+        $product = ProductModel::where('display',1)->where('is_hot',1)->orderBy('created_at','desc')->paginate(28);
 
         return view('web.category.list_hot',compact('product'));
     }

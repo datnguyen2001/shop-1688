@@ -34,7 +34,7 @@ class ProductController extends Controller
             $cartItemsJson = json_encode($viewItemProduct);
             Cookie::queue('viewItemProduct', $cartItemsJson, 60 * 24 * 30);
         }
-        $product_viewed = ProductModel::whereIn('id',$viewItemProduct)->paginate(24);
+        $product_viewed = ProductModel::whereIn('id',$viewItemProduct)->orderBy('created_at','desc')->paginate(24);
 
         return view('web.product.index',compact('product','category','product_more','user','product_image',
             'product_color','product_viewed'));
