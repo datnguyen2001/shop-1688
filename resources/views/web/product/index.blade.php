@@ -297,15 +297,10 @@ Nhập Enter để xuống dòng"></textarea>
 
 
         function downloadAllImages() {
-            // var imageUrl = document.getElementById('imageUrl').value.trim();
-            // var hiddenAnchor = document.createElement('a');
-            // hiddenAnchor.href = window.location.origin + '/' + imageUrl;
-            // hiddenAnchor.download = 'image.jpg';
-            // document.body.appendChild(hiddenAnchor);
-            // hiddenAnchor.click();
-            // document.body.removeChild(hiddenAnchor);
-            var images = @json($product_color).map(color => color.src);
-            images.forEach((image, index) => {
+            var productImages = @json($product_image).map(image => image.src);
+            var colorImages = @json($product_color).map(color => color.src);
+            var allImages = productImages.concat(colorImages);
+            allImages.forEach((image, index) => {
                 setTimeout(() => {
                     var hiddenAnchor = document.createElement('a');
                     hiddenAnchor.href = window.location.origin + '/' + image;
